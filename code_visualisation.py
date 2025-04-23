@@ -11,7 +11,7 @@ df = pd.read_csv("tables/synthese_2023.csv")
 df_past = pd.read_csv("tables/synthese_2013.csv")
 
 # Vérifie que les colonnes sont bien alignées
-colonnes_disponibles = [col for col in df.columns if col in df_past.columns and col not in ["pole"]]
+colonnes_disponibles = [col for col in df.columns if col in df_past.columns and col != "pole"]
 
 # Sélection de l’indice
 colonne = st.selectbox("Choisissez un indice à comparer :", colonnes_disponibles)
