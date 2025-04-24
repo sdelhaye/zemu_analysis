@@ -16,6 +16,25 @@ colonnes_disponibles = [col for col in df.columns if col in df_past.columns and 
 # Sélection de l’indice
 colonne = st.selectbox("Choisissez un indice à comparer :", colonnes_disponibles)
 
+# Dictionnaire de notes explicatives
+notes = {
+    "FAR": "FAR : Floor Area Ratio (P/S) — correspond au rapport : Surface de plancher / Surface de la zone.",
+    "verti_mix": "Mixité verticale, correspond au '%' de bâtiments mixtes (logement au rdc, et autres activités aux étages) sur le nombre de bâtiment total de la zone ",
+    "horiz_mix": "Mixité horizontale, correspond au '%' de parcelles où on a au moins deux grandes activités différentes au RDC",
+    "sp_tot": "Superficie plancher totale dans la zone",
+    "bat_tot":" Nombre de bâtiment dans la zone",
+    "bat_vac":"Nombre de bâtiment où il y a une au moins une partie innocupée",
+    "GSI": "GSI : Ground Space Index (B/S) - correspond au rapport : Emprise au sol bâtie / Surface de la zone",
+    "mxi_log" : "'%' de superficie de logement sur la superficie plancher totale de la zone" 
+    # Ajoute d'autres colonnes ici si nécessaire
+}
+
+# Affichage de la note explicative si disponible
+if colonne in notes:
+    st.markdown(f"**ℹ️ Note :** {notes[colonne]}")
+else:
+    st.markdown("ℹ️ Pas de description disponible pour cette variable.")
+
 # Récupère la liste complète des pôles/régions
 toutes_les_regions = df["pole"].tolist()
 
