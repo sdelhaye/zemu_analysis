@@ -80,7 +80,17 @@ if colonne.startswith("mxi_"):
 
     fig2, ax2 = plt.subplots(figsize=(12, 6))
     ax2.bar(x - largeur/2, df_past_filtre[surface_col], largeur, label="2013", color="lightgray")
-    ax2.bar(x + largeur/2, df_filtre[surface_col], largeur, label="2023", color="seagreen")
+    if colonne[4:]=="log":
+        color2023="#FEAB4E"
+    elif colonne[4:]=="bur":
+        color2023="#80A0D3"
+    elif colonne[4:]=="ind":
+        color2023="#6C61AE"
+    elif colonne[4:]=="comm":
+        color2023="#E6A0C8"    
+    elif colonne[4:]=="equip":
+        color2023="#58C9D7"   
+    ax2.bar(x + largeur/2, df_filtre[surface_col], largeur, label="2023", color=color2023)
     ax2.set_xlabel("Pôles", fontsize=16)
     ax2.set_ylabel(f"Superficie {colonne[4:]} (m²)", fontsize=16)
     ax2.set_title("2013 vs 2023", fontsize=18)
